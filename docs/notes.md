@@ -1,9 +1,10 @@
-Notes to understand the notations
+---
+title: "Notes to understand the notations"
 ---
 
 # Notations in Teh et al.
 
-[Paper](teh_hdp.pdf), see Sec.5 for Inference
+[Paper](../teh_hdp.pdf), see Sec.5 for Inference
 
 ### Indices
 
@@ -24,7 +25,7 @@ one obervation of word $k$
 
 # Notations in Wang et al.
 
-[Paper](wang_traj.pdf), see Sec.6 for pseudo-algo
+[Paper](../wang_traj.pdf), see Sec.6 for pseudo-algo
 
 ### Indices
 

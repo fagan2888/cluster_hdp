@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Notes to understand the notations</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css;charset=utf-8,html%2C%20body%20%7B%0Apadding%3A1em%3B%0Amargin%3Aauto%3B%0Amax%2Dwidth%3A60em%3B%0Abackground%3A%23fefefe%3B%0A%7D%0Abody%20%7B%0Afont%3A%201%2E3em%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20freesans%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0Acolor%3A%20%23333%3B%0Aline%2Dheight%3A%201%2E4%3B%0Atext%2Dalign%3A%20justify%3B%0A%7D%0Aheader%2C%20nav%2C%20article%2C%20footer%20%7B%0Awidth%3A%20700px%3B%0Amargin%3A0%20auto%3B%0A%7D%0Aarticle%20%7B%0Amargin%2Dtop%3A%204em%3B%0Amargin%2Dbottom%3A%204em%3B%0Amin%2Dheight%3A%20400px%3B%0A%7D%0Afooter%20%7B%0Amargin%2Dbottom%3A50px%3B%0A%7D%0Avideo%20%7B%0Amargin%3A%202em%200%3B%0Aborder%3A1px%20solid%20%23ddd%3B%0A%7D%0Anav%20%7B%0Afont%2Dsize%3A%20%2E9em%3B%0Afont%2Dstyle%3A%20italic%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23ddd%3B%0Apadding%3A%201em%200%3B%0A%7D%0Anav%20p%20%7B%0Amargin%3A%200%3B%0A%7D%0A%0Ah1%20%7B%0Amargin%2Dtop%3A%201em%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Ah2%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Ah2%2Eauthor%20%7B%0Adisplay%3A%20none%3B%0A%7D%0Ah4%2Elink%2Dback%20%7B%0Afont%2Dweight%3A%20normal%3B%0Atext%2Dalign%3A%20right%3B%0A%7D%0Ah3%20%7B%0Afont%2Dweight%3A%20normal%3B%0Afont%2Dstyle%3A%20italic%3B%0Amargin%2Dtop%3A3em%3B%0A%7D%0Ap%20%7B%0Amargin%2Dtop%3A0%3B%0A%2Dwebkit%2Dhypens%3Aauto%3B%0A%2Dmoz%2Dhypens%3Aauto%3B%0Ahyphens%3Aauto%3B%0A%7D%0Aul%20%7B%0Alist%2Dstyle%3A%20square%3B%0Apadding%2Dleft%3A1%2E2em%3B%0A%7D%0Aol%20%7B%0Apadding%2Dleft%3A1%2E2em%3B%0A%7D%0Ablockquote%20%7B%0Amargin%2Dleft%3A%201em%3B%0Apadding%2Dleft%3A%201em%3B%0Aborder%2Dleft%3A%201px%20solid%20%23ddd%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20%22Menlo%22%2C%20%22Consolas%22%2C%20%22Monaco%22%2C%20monospace%2C%20serif%3B%0Abackground%2Dcolor%3A%20%23f0f0f0%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23ccc%3B%0Apadding%2Dleft%3A%20%2E25em%3B%0Apadding%2Dright%3A%20%2E25em%3B%0A%7D%0Apre%20code%20%7B%0Aborder%3A%200%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0A%7D%0Apre%2Epython%2Dtraceback%20%7B%0Acolor%3A%20%23b50000%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%232484c1%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0Aa%20img%20%7B%0Aborder%3Anone%3B%0A%7D%0Ah1%20a%2C%20h1%20a%3Ahover%20%7B%0Acolor%3A%20%23333%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Ahr%20%7B%0Acolor%20%3A%20%23ddd%3B%0Aheight%20%3A%201px%3B%0Amargin%3A%202em%200%3B%0Aborder%3A%20solid%201px%20%23ddd%3B%0A%7D%0Atable%20%7B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%2C%20tr%2C%20td%2C%20th%20%7B%0Aborder%3A%20solid%201px%20%23ddd%3B%0A%7D%0Atd%2C%20th%20%7B%0Apadding%2Dleft%3A%2015px%3B%0Apadding%2Dright%3A%2015px%3B%0A%7D%0Ap%23heart%7B%0Afont%2Dsize%3A%202em%3B%0Aline%2Dheight%3A%201%3B%0Atext%2Dalign%3A%20center%3B%0Acolor%3A%20%23ccc%3B%0A%7D%0A%2Ered%20%7B%0Acolor%3A%23B50000%3B%0A%7D%0Apre%20%7B%0Apadding%3A%2016px%3B%0Aoverflow%3A%20auto%3B%0Abackground%2Dcolor%3A%20%23f0f0f0%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23ccc%3B%0A%7D%0Aspan%2Eheader%2Dsection%2Dnumber%3Aafter%20%7B%0Acontent%3A%20%22%2E%22%3B%0A%7D%0Aspan%2Etoc%2Dsection%2Dnumber%3Aafter%20%7B%0Acontent%3A%20%22%2E%22%3B%0A%7D%0Ah1%2Etitle%20%7B%0Afont%2Dfamily%3A%20%22Helvetica%20Neue%22%3B%0Afont%2Dsize%3A%202%2E5em%3B%0Atext%2Dalign%3A%20left%3B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Ah4%2Esubtitle%20%7B%0Amargin%2Dtop%3A%20%2E5em%3B%0Amargin%2Dbottom%3A%202em%3B%0A%7D%0Aa%2Eanchorjs%2Dlink%20%7B%0Acolor%3A%20%23000000%3B%0A%7D%0Ah1%2Etitle%20a%2Eanchorjs%2Dlink%2C%20h2%2Eauthor%20a%2Eanchorjs%2Dlink%2C%20h4%2Esubtitle%20a%2Eanchorjs%2Dlink%2C%20h4%2Elink%2Dback%20a%2Eanchorjs%2Dlink%20%7B%0Adisplay%3A%20none%3B%0A%7D%0Atd%2ElineNumbers%20%7B%0Awidth%3A%207%25%3B%0Afont%2Dfamily%3A%20%22Menlo%22%2C%20%22Consolas%22%2C%20%22Monaco%22%2C%20monospace%2C%20serif%3B%0Aborder%3A%20none%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%5Balt%3Dfullwidth%5D%20%7B%20width%3A%20100%25%3B%20%7D%0Aimg%5Balt%3Dfullwidth%5Fwith%5Fborder%5D%20%7B%20width%3A%20100%25%3B%20border%3A%201px%20solid%20black%3B%20%7D%0Aimg%5Balt%3Dhalfwidth%5D%20%7B%20width%3A%2045%25%3B%20margin%2Dleft%3A%20auto%3B%20margin%2Dright%3A%20auto%3B%7D%0Aimg%5Balt%3Dhalfwidth%5Fwith%5Fborder%5D%20%7B%20width%3A%2045%25%3B%20margin%2Dleft%3A%20auto%3B%20margin%2Dright%3A%20auto%3B%20border%3A%201px%20solid%20black%3B%20%7D%0A%0A%0Abody%23index%20li%20%7B%0Amargin%2Dbottom%3A%201em%3B%0A%7D%0A%0A%40media%20only%20screen%20and%20%28max%2Ddevice%2Dwidth%3A%201024px%29%20%7B%0Abody%20%7B%0Afont%2Dsize%3A%20120%25%3B%0Aline%2Dheight%3A%201%2E4%3B%0A%7D%0A%7D%20%0A%0A%40media%20only%20screen%20and%20%28max%2Ddevice%2Dwidth%3A%20480px%29%20%7B%0Abody%20%7B%0Atext%2Dalign%3A%20left%3B%0A%7D%0Aarticle%2C%20footer%20%7B%0Awidth%3A%20auto%3B%0A%7D%0Aarticle%20%7B%0Apadding%3A%200%2010px%3B%0A%7D%0A%7D%20%0A" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">/*<![CDATA[*/
+  /*
+  March 19, 2004 MathHTML (c) Peter Jipsen http://www.chapman.edu/~jipsen
+  Released under the GNU General Public License version 2 or later.
+  See the GNU General Public License (at http://www.gnu.org/copyleft/gpl.html)
+  for more details.
+  */
+  
+  function convertMath(node) {// for Gecko
+    if (node.nodeType==1) {
+      var newnode =
+        document.createElementNS("http://www.w3.org/1998/Math/MathML",
+          node.nodeName.toLowerCase());
+      for(var i=0; i < node.attributes.length; i++)
+        newnode.setAttribute(node.attributes[i].nodeName,
+          node.attributes[i].value);
+      for (var i=0; i<node.childNodes.length; i++) {
+        var st = node.childNodes[i].nodeValue;
+        if (st==null || st.slice(0,1)!=" " && st.slice(0,1)!="\n")
+          newnode.appendChild(convertMath(node.childNodes[i]));
+      }
+      return newnode;
+    }
+    else return node;
+  }
+  
+  function convert() {
+    var mmlnode = document.getElementsByTagName("math");
+    var st,str,node,newnode;
+    for (var i=0; i<mmlnode.length; i++)
+      if (document.createElementNS!=null)
+        mmlnode[i].parentNode.replaceChild(convertMath(mmlnode[i]),mmlnode[i]);
+      else { // convert for IE
+        str = "";
+        node = mmlnode[i];
+        while (node.nodeName!="/MATH") {
+          st = node.nodeName.toLowerCase();
+          if (st=="#text") str += node.nodeValue;
+          else {
+            str += (st.slice(0,1)=="/" ? "</m:"+st.slice(1) : "<m:"+st);
+            if (st.slice(0,1)!="/")
+               for(var j=0; j < node.attributes.length; j++)
+                 if (node.attributes[j].value!="italic" &&
+                   node.attributes[j].value!="" &&
+                   node.attributes[j].value!="inherit" &&
+                   node.attributes[j].value!=undefined)
+                   str += " "+node.attributes[j].nodeName+"="+
+                       "\""+node.attributes[j].value+"\"";
+            str += ">";
+          }
+          node = node.nextSibling;
+          node.parentNode.removeChild(node.previousSibling);
+        }
+        str += "</m:math>";
+        newnode = document.createElement("span");
+        node.parentNode.replaceChild(newnode,node);
+        newnode.innerHTML = str;
+      }
+  }
+  
+  if (document.createElementNS==null) {
+    document.write("<object id=\"mathplayer\"\
+    classid=\"clsid:32F66A20-7614-11D4-BD11-00104BD3F987\"></object>");
+    document.write("<?import namespace=\"m\" implementation=\"#mathplayer\"?>");
+  }
+  if(typeof window.addEventListener != 'undefined'){
+    window.addEventListener('load', convert, false);
+  }
+  if(typeof window.attachEvent != 'undefined') {
+    window.attachEvent('onload', convert);
+  }
+  /*]]>*/
+  </script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Notes to understand the notations</h1>
+</div>
+<h1 id="notations-in-teh-et-al."><span class="header-section-number">1</span> Notations in Teh et al.</h1>
+<p><a href="../teh_hdp.pdf">Paper</a>, see Sec.5 for Inference</p>
+<h3 id="indices"><span class="header-section-number">1.0.1</span> Indices</h3>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> is a document index</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> is an observation index (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j,i</annotation></semantics></math> is observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> is a word index</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math> is a movement mode index</li>
+</ul>
+<h3 id="notations"><span class="header-section-number">1.0.2</span> Notations</h3>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">x_{j,i}</annotation></semantics></math> is observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> (a word index)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">z_{j,i}</annotation></semantics></math> is the movement mode associated to observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">x_{j,i}</annotation></semantics></math> (a movement mode index)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">m_{j,k}</annotation></semantics></math> is the number of movement modes in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> that have at least one obervation of word <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></li>
+</ul>
+<h1 id="notations-in-wang-et-al."><span class="header-section-number">2</span> Notations in Wang et al.</h1>
+<p><a href="../wang_traj.pdf">Paper</a>, see Sec.6 for pseudo-algo</p>
+<h3 id="indices-1"><span class="header-section-number">2.0.1</span> Indices</h3>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> is a document index</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> is an observation index (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">j,i</annotation></semantics></math> is observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> is a movement mode index</li>
+</ul>
+<h3 id="notations-1"><span class="header-section-number">2.0.2</span> Notations</h3>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">w_{j,i}</annotation></semantics></math> is observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> (a word index)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">z_{j,i}</annotation></semantics></math> is the movement mode associated to observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">x_{j,i}</annotation></semantics></math> (a movement mode index)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">t_{j,i}</annotation></semantics></math> is the occurrence in which observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> in doc <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> is assigned</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mrow><mi>j</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">k_{j,t}</annotation></semantics></math> is the movement mode associated to occurrence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math> in doc <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>j</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">m_{j,k}</annotation></semantics></math> is the number of occurrences in document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> that are assigned movement mode <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#960;</mi><mrow><mn>0</mn><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\pi_{0,k}</annotation></semantics></math> is the weight of movement mode <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> in the overall distribution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mn>0</mn></msub><annotation encoding="application/x-tex">G_0</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>&#960;</mi><mo accent="true">&#771;</mo></mover><mrow><mi>c</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\tilde{\pi}_{c,k}</annotation></semantics></math> is the weight of movement mode <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> in the distribution related to cluster <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><msub><mi>G</mi><mi>c</mi></msub><mo accent="true">&#771;</mo></mover><annotation encoding="application/x-tex">\tilde{G_c}</annotation></semantics></math></li>
+</ul>
+<h3 id="algo"><span class="header-section-number">2.0.3</span> Algo</h3>
+<p><strong>Step 1.</strong> At step 1. in their algorithm, they assume:</p>
+<ul>
+<li>fixed cluster assignment <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>j</mi></msub><annotation encoding="application/x-tex">c_j</annotation></semantics></math> for document <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math></li>
+<li>sampling <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">z_{j,i}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#960;</mi><mrow><mn>0</mn><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\pi_{0,k}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>&#960;</mi><mo accent="true">&#771;</mo></mover><mrow><mi>c</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\tilde{\pi}_{c,k}</annotation></semantics></math> is sufficient</li>
+</ul>
+<p>Sampling <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">z_{j,i}</annotation></semantics></math> can be done using Eq.(37) in Teh et al. where we use:</p>
+<p><strong>TODO</strong></p>
+<p>Also, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#960;</mi><mrow><mn>0</mn><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\pi_{0,k}</annotation></semantics></math> is sampled from a DP according to Eq(36) in Teh et al (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#946;</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\beta_k</annotation></semantics></math> in Teh is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#960;</mi><mrow><mn>0</mn><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\pi_{0,k}</annotation></semantics></math> in Wang). Similarly, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>&#960;</mi><mo accent="true">&#771;</mo></mover><mrow><mi>c</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\tilde{\pi}_{c,k}</annotation></semantics></math> is sampled using only information from documents assigned to cluster <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.</p>
+<p><strong>Step 2.</strong> At step 2, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi>j</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">z_{j,i}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>&#960;</mi><mrow><mn>0</mn><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\pi_{0,k}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>&#960;</mi><mo accent="true">&#771;</mo></mover><mrow><mi>c</mi><mo>,</mo><mi>k</mi></mrow></msub><annotation encoding="application/x-tex">\tilde{\pi}_{c,k}</annotation></semantics></math> are fixed and we sample cluster assignments <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>j</mi></msub><annotation encoding="application/x-tex">c_j</annotation></semantics></math> using Chinese restaurant process:</p>
+<p>Eq(34) in Teh where we operate at the document level instead of observation level. (<strong>TODO: new mappings here</strong>)</p>
+<p><strong>Step 3.</strong> Sample beta_clusters based on Eq.(36) adapted at the cluster level.</p>
+</body>
+</html>
