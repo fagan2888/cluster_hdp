@@ -76,7 +76,11 @@ assigned to cluster $c$.
 and we sample cluster assignments $c_j$ using Chinese restaurant process:
 
 Eq(34) in Teh where we operate at the document level instead of observation 
-level. (**TODO: new mappings here**)
+level:
+
+$$p(c_{j} = c | \mathbf{c}^{-(j)}) \propto Ndocs_{c}^{-(j)} f_c^{-(j)}(\mathbf{x}_{j, \cdot})$$
+
+**TODO:** Pierre, can you elaborate on $f_c^{-(j)}(\mathbf{x}_{j,\cdot})$?
 
 **Step 3.** Sample beta_clusters based on Eq.(36) adapted at the cluster level.
  
