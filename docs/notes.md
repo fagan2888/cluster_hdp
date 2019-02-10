@@ -68,7 +68,10 @@ $$p(z_{j,i}=k|\mathbf{z}^{-(j,i)}, \mathbf{m}, \mathbf{\beta}) = (n_{j, \cdot, k
 where $n_{j, t, k} = 0$ and $\beta_k=\beta_u$ if $k$ is a new movement mode. 
 
 Also, $\pi_{0,k}$ is sampled from a DP according to Eq(36) in Teh et al 
-($\beta_k$ in Teh is $\pi_{0,k}$ in Wang).
+($\beta_k$ in Teh is $\pi_{0,k}$ in Wang):
+
+$$(\beta_1, \dots, \beta_K, \beta_u) \sim \text{Dirichlet}(m_{\cdot, 1}, \dots, m_{\cdot, K}, \gamma)$$
+
 Similarly, $\tilde{\pi}_{c,k}$ is sampled using only information from documents 
 assigned to cluster $c$.
 
