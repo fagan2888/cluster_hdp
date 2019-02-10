@@ -180,12 +180,11 @@ class HdpTopic:
         """
         probas = []
         n_j_k = self.n_j_k(j, k)
-        factor = gamma_fun(self.alpha0 * self.beta_[k])
-        factor /= gamma_fun(self.alpha0 * self.beta_[k] + n_j_k)
         for m in range(n_j_k + 1):
-            probas.append(factor * self._stirling(n_j_k, m) * (self.alpha0 * self.beta_[k]) ** m)
-        draw = self.random_state.multinomial(n=1,
-                                             pvals=numpy.array(probas, dtype=numpy.float64))
+            probas.append(self._stirling(n_j_k, m) * (self.alpha0 * self.beta_[k]) ** m)
+        probas = numpy.array(probas, dtype=numpy.float64)
+        probas /= numpy.sum(probas)
+        draw = self.random_state.multinomial(n=1, pvals=probas)
         return numpy.argmax(draw)
 
     def draw_z_ji(self, j, i):
@@ -209,9 +208,9 @@ class HdpTopic:
             pr = (self.n_j_k(j, k) + self.alpha0 * self.beta_[k]) * self.f_k_w(k, w)
             probas.append(pr)
         probas.append(self.alpha0 * self.beta_[-1] * self.f_k_w(-1, w))
-        draw = self.random_state.multinomial(n=1,
-                                             pvals=numpy.array(probas,
-                                                               dtype=numpy.float64))
+        probas = numpy.array(probas, dtype=numpy.float64)
+        probas /= numpy.sum(probas)
+        draw = self.random_state.multinomial(n=1, pvals=probas)
         return numpy.argmax(draw)
 
     def update_counts(self, j, i, increment):
