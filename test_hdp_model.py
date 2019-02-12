@@ -12,5 +12,6 @@ movement_modes = numpy.random.dirichlet(alphas, n_movement_modes)
 modele = data_gen.MixtureModel(movement_modes)
 toy_data = modele.generate_documents(n_docs=20, n_words=100)
 
-modele = hdp_model.HdpTopic(1, 1, 20)
+modele = hdp_model.HdpTopic(1, 1, 200)
 modele.fit(toy_data)
+print(modele.n_topics_)

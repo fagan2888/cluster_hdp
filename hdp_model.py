@@ -138,7 +138,7 @@ class HdpTopic:
         float
             $f_k(w)$
         """
-        return self.alpha0 * self.n_k_w(k, w)
+        return self.alpha0 + self.n_k_w(k, w)
 
     def m_k(self, k):
         """Number of occurrences for a given topic ($m_{\cdot, k}$ in Teh et al.)
