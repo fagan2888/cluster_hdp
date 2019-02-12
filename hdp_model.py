@@ -1,5 +1,6 @@
 from sklearn.utils import check_random_state
 import numpy
+import scipy
 
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
@@ -166,9 +167,7 @@ class HdpTopic:
         ndarray
             Vector of betas of size n_topics + 1, in which beta_u is last
         """
-        alpha = [self.m_k(k) for k in range(self.n_topics_)] + [self.gamma]
-        print(alpha)
-        print(self.n_obs_jk_)
+        alpha = [max(self.m_k(k), 10 ** (-12)) for k in range(self.n_topics_)] + [self.gamma]
         return self.random_state.dirichlet(alpha=alpha)
 
     def _stirling(self, n, m):
@@ -213,9 +212,15 @@ class HdpTopic:
         """
         probas = []
         n_j_k = self.n_j_k(j, k)
-        for m in range(n_j_k + 1):
-            probas.append(self._stirling(n_j_k, m) * (self.alpha0 * self.beta_[k]) ** m)
-        probas = numpy.array(probas, dtype=numpy.float64)
+        if n_j_k == 0:# Case where the value is 0 almost surely
+            probas.append(1);
+        else:# Otherwise
+            alpha0_betak = self.alpha0 * self.beta_[k]
+            gamma_num = scipy.special.gamma(alpha0_betak)
+            gamma_denom = scipy.special.gamma(alpha0_betak)
+            for m in range(n_j_k + 1):
+                prob = gamma_num / gamma_denom * self._stirling(n_j_k, m) * (alpha0_betak) ** m
+                probas.append(prob)
         probas /= (1e-9 + numpy.sum(probas))
         draw = self.random_state.multinomial(n=1, pvals=probas)
         return numpy.argmax(draw)
@@ -285,6 +290,7 @@ class HdpTopic:
     def fit_one_iter(self):
         """Do a single iteration of the Gibbs sampling process."""
         # Draw z_ji
+        print(self.m_j_k_)
         for j in range(self.n_docs_):
             for i in range(self.n_obs_in_doc(j)):
                 # a. Unset z_ji
@@ -322,12 +328,13 @@ class HdpTopic:
         self._data = X
         self._set_vocabulary_size()
         self.omega0 = [1.] * self.vocabulary_size
-        self.z_ji_ = []
-        for j in range(self.n_docs_):
-            self.z_ji_.append([None] * self.n_obs_in_doc(j))
+        self.z_ji_ = [None] * self.n_docs_
+        for doc in range(self.n_docs_):
+            self.z_ji_[doc] = [None] * self.n_obs_in_doc(doc)
         betas = self.draw_beta()
         self.beta_[-1] = betas[-1]
 
         for it in range(self.iter):
+            print("Iteration ", it)
             self.fit_one_iter()
 
