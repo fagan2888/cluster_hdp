@@ -167,6 +167,8 @@ class HdpTopic:
             Vector of betas of size n_topics + 1, in which beta_u is last
         """
         alpha = [self.m_k(k) for k in range(self.n_topics_)] + [self.gamma]
+        print(alpha)
+        print(self.n_obs_jk_)
         return self.random_state.dirichlet(alpha=alpha)
 
     def _stirling(self, n, m):
@@ -268,6 +270,18 @@ class HdpTopic:
             w = self._data[j][i]
             self.n_obs_kw_[k, w] = self.n_obs_kw_.get((k, w), 0) + increment
 
+    def _create_topic(self, k):
+        self.n_topics_ = max(self.n_topics_, k + 1)
+
+        b = self.random_state.beta(1., self.gamma)
+        self.beta_[k] = b * self.beta_[-1]
+        self.beta_[-1] *= (1. - b)
+
+        for j in range(self.n_docs_):
+            self.n_obs_jk_[j, k] = 0
+        for w in range(self.vocabulary_size):
+            self.n_obs_kw_[k, w] = 0
+
     def fit_one_iter(self):
         """Do a single iteration of the Gibbs sampling process."""
         # Draw z_ji
@@ -278,7 +292,8 @@ class HdpTopic:
                 # b. Draw z_ji
                 self.z_ji_[j][i] = self.draw_z_ji(j, i)
                 if self.z_ji_[j][i] >= self.n_topics_:
-                    self.n_topics_ += 1
+                    self._create_topic(self.z_ji_[j][i])
+
                 # c. Update counts
                 self.update_counts(j, i, 1)
 
@@ -287,7 +302,7 @@ class HdpTopic:
         for j in range(self.n_docs_):
             self.m_j_k_.append([])
             for k in range(self.n_topics_):
-                self.m_j_k_.append(self.draw_m_jk(j, k))
+                self.m_j_k_[j].append(self.draw_m_jk(j, k))
 
         # Draw beta
         betas = self.draw_beta()
