@@ -54,7 +54,7 @@ class HdpTopic:
                 if self._data[j][i] >= self.vocabulary_size:
                     self.vocabulary_size = self._data[j][i] + 1
 
-    @property
+    @property# Attribut
     def n_docs_(self):
         return len(self._data)
 
