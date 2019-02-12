@@ -1,5 +1,4 @@
 from sklearn.utils import check_random_state
-from scipy.special import gamma as gamma_fun
 import numpy
 
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
@@ -14,17 +13,15 @@ class HdpTopic:
         Concentration parameter
     gamma: float
         Concentration parameter
-    alphabet_size: int
-        Number of words in the alphabet (TODO later: could be computed from the data)
     iter: int
         Number of iterations for fitting
     random_state: RandomState or int or None (default: None)
         Random state
     """
-    def __init__(self, alpha0, gamma, alphabet_size, iter, random_state=None):
+    def __init__(self, alpha0, gamma, iter, random_state=None):
         self.alpha0 = alpha0
         self.gamma = gamma
-        self.alphabet_size = alphabet_size
+        self.vocabulary_size = -1
         self.iter = iter
         self.random_state = check_random_state(random_state)
         self.n_obs_kw_ = {}
@@ -35,6 +32,27 @@ class HdpTopic:
         self.n_topics_ = 0
         self._precomputed_stirling = {}
         self._data = []
+
+    def _set_vocabulary_size(self):
+        """Set vocabulary size according to the data provided at fit time.
+
+        Examples
+        --------
+        >>> docs = [[1, 0, 2]]
+        >>> model = HdpTopic(alpha0=1., gamma=1., iter=0)
+        >>> model.fit(docs)
+        >>> model.vocabulary_size
+        3
+        >>> docs = [[1, 3, 5], [2, 4], [1, 8]]
+        >>> model = HdpTopic(alpha0=1., gamma=1., iter=0)
+        >>> model.fit(docs)
+        >>> model.vocabulary_size
+        9
+        """
+        for j in range(self.n_docs_):
+            for i in range(self.n_obs_in_doc(j)):
+                if self._data[j][i] >= self.vocabulary_size:
+                    self.vocabulary_size = self._data[j][i] + 1
 
     @property
     def n_docs_(self):
@@ -52,6 +70,18 @@ class HdpTopic:
         -------
         int
             Number of observations in document j ($N_j$)
+
+        Example
+        -------
+        >>> docs = [[1, 3, 5], [2, 4], [1, 8]]
+        >>> model = HdpTopic(alpha0=1., gamma=1., iter=0)
+        >>> model.fit(docs)
+        >>> model.n_obs_in_doc(0)
+        3
+        >>> model.n_obs_in_doc(1)
+        2
+        >>> model.n_obs_in_doc(2)
+        2
         """
         return len(self._data[j])
 
@@ -269,9 +299,10 @@ class HdpTopic:
         ----------
         X: list of lists of integers
             Observations (list of documents, each document being itself a list
-            of obersvations)
+            of obersvations). Each observation is an integer between 0 and |V|-1
         """
         self._data = X
+        self._set_vocabulary_size()
         self.z_ji_ = []
         for j in range(self.n_docs_):
             self.z_ji_.append([None] * self.n_obs_in_doc(j))
