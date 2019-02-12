@@ -276,6 +276,8 @@ class HdpTopic:
                 self.update_counts(j, i, -1)
                 # b. Draw z_ji
                 self.z_ji_[j][i] = self.draw_z_ji(j, i)
+                if self.z_ji_[j][i] >= self.n_topics_:
+                    self.n_topics_ += 1
                 # c. Update counts
                 self.update_counts(j, i, 1)
 
