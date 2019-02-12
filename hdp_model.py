@@ -20,6 +20,7 @@ class HdpTopic:
     """
     def __init__(self, alpha0, gamma, iter, random_state=None):
         self.alpha0 = alpha0
+        self.omega0 = []# Code des densites initiales
         self.gamma = gamma
         self.vocabulary_size = -1
         self.iter = iter
@@ -138,7 +139,7 @@ class HdpTopic:
         float
             $f_k(w)$
         """
-        return self.alpha0 + self.n_k_w(k, w)
+        return self.omega0[w] + self.n_k_w(k, w)
 
     def m_k(self, k):
         """Number of occurrences for a given topic ($m_{\cdot, k}$ in Teh et al.)
@@ -305,6 +306,8 @@ class HdpTopic:
         """
         self._data = X
         self._set_vocabulary_size()
+        for word in range(self.vocabulary_size):
+            self.omega0[word] = 1
         self.z_ji_ = []
         for j in range(self.n_docs_):
             self.z_ji_.append([None] * self.n_obs_in_doc(j))
