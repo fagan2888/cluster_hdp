@@ -306,8 +306,7 @@ class HdpTopic:
         """
         self._data = X
         self._set_vocabulary_size()
-        for word in range(self.vocabulary_size):
-            self.omega0[word] = 1
+        self.omega0 = [1.] * self.vocabulary_size
         self.z_ji_ = []
         for j in range(self.n_docs_):
             self.z_ji_.append([None] * self.n_obs_in_doc(j))
