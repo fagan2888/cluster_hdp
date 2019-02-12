@@ -213,7 +213,7 @@ class HdpTopic:
         for m in range(n_j_k + 1):
             probas.append(self._stirling(n_j_k, m) * (self.alpha0 * self.beta_[k]) ** m)
         probas = numpy.array(probas, dtype=numpy.float64)
-        probas /= numpy.sum(probas)
+        probas /= (1e-9 + numpy.sum(probas))
         draw = self.random_state.multinomial(n=1, pvals=probas)
         return numpy.argmax(draw)
 
@@ -239,7 +239,7 @@ class HdpTopic:
             probas.append(pr)
         probas.append(self.alpha0 * self.beta_[-1] * self.f_k_w(-1, w))
         probas = numpy.array(probas, dtype=numpy.float64)
-        probas /= numpy.sum(probas)
+        probas /= (1e-9 + numpy.sum(probas))
         draw = self.random_state.multinomial(n=1, pvals=probas)
         return numpy.argmax(draw)
 
@@ -275,7 +275,7 @@ class HdpTopic:
                 # a. Unset z_ji
                 self.update_counts(j, i, -1)
                 # b. Draw z_ji
-                self.z_ji_ = self.draw_z_ji(j, i)
+                self.z_ji_[j][i] = self.draw_z_ji(j, i)
                 # c. Update counts
                 self.update_counts(j, i, 1)
 
@@ -306,6 +306,9 @@ class HdpTopic:
         self.z_ji_ = []
         for j in range(self.n_docs_):
             self.z_ji_.append([None] * self.n_obs_in_doc(j))
+        betas = self.draw_beta()
+        self.beta_[-1] = betas[-1]
+
         for it in range(self.iter):
             self.fit_one_iter()
 
